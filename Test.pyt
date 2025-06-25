@@ -1,19 +1,15 @@
-"""nom = input("Quel est votre nom ? ")
-age = input("Quel est votre âge ? ")
-try:
-    age_pro = int(age) + 1
-except:
- print("arrêtez d'être un idiot " + nom + " et entrez un nombre pour l'âge.")
-else:
-   print("Bonjour, tu t'appelles " + nom + " et tu as " + age + " ans.")
-   print("L'année prochaine, tu auras " + str(age_pro) + " ans.")
-n = 0
-while n < 1000000000:
-    print(n)
-    n += 1
-    """
 
-mot_de_passe = "1234"
-ask = input("Entrez le mot de passe : ")
-if ask == mot_de_passe:
-    print("Mot de passe correct !")
+name = input("Enter your name: ")
+age = input ("Enter your age: ")
+
+age_prochain = 0
+while age_prochain == 0:
+    age = input("Enter your age: ")
+    try:
+        age_prochain = int(age) + 1
+    except ValueError:
+        print("Please enter a valid number for age.")
+        
+print("Hello " + name + ", You're " + str(age) + " years old.")
+print("Next year, you will be " + str(age_prochain) + " years old.")
+print("Have a great day!")
