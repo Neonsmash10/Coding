@@ -1,19 +1,47 @@
-nom = input("Comment t'appelles tu ?")
-solde = 100
-print(f"Bienvenue {nom}! Vous avez ${solde} dans votre compte bancaire.")
-print("Que voulez-vous faire avec cet argent ?")
-gambling = input("1. Pourquoi garder cet argent quand on peut le parier ?")
-print("En construction...")
+import random
 
-def parier_montant(solde):
-    print("Combien voulez-vous parier ?")
-    montant = input("Entrez le montant à parier : ")
-    import random
+def parier_montant(solde, nom):
+    while True:
+        montant = input("Entrez le montant à parier : ")
+        if not montant.isdigit():
+            print("Entre un nombre valide, stp.")
+            continue
+        montant = int(montant)
+        if montant <= 0:
+            print("Tu blagues j'espère ?.")
+            continue
+        if montant > solde:
+            print("T'as pas assez d'argent pour ça malheureusement.")
+            continue
+        break
+
     tirage = random.randint(1, 2)
     if tirage == 1:
-        print(f"Félicitations, {nom}, vous venez de le double de votre mise !")
         solde += montant
+        print(f"Félicitations, {nom}, tu viens de doubler ta mise ! Ton solde est maintenant {solde}€.")
     else:
-        print(f"Désolé,{nom}, vous avez perdu l'entièreté de votre mise.")
         solde -= montant
+        print(f"Désolé, {nom}, tu as perdu ta mise. Solde restant : {solde}€.")
     return solde
+
+nom = input("Comment t'appelles-tu ? ")
+solde = 100
+print(f"Bienvenue {nom}! Tu as {solde}€ dans ta poche.")
+
+while True:
+    print("\nQue veux-tu faire ?")
+    print("1: Parier !!!")
+    print("2: Sortir du casino")
+
+    choix = input("Choisis 1 ou 2 stp : ")
+
+    if choix == "1":
+        solde = parier_montant(solde, nom)
+        if solde <= 0:
+            print("Désolé frérot, t'as plus une thune, c’est fini pour toi.")
+            break
+    elif choix == "2":
+        print("Allez, dehors ! Faut être joueur dans la vie, mais pas trop non plus.")
+        break
+    else:
+        print("Écris 1 ou 2, c'est pas si compliqué que ça hein.")
