@@ -1,5 +1,8 @@
 import random
 
+def cartes():
+    random.randint(1,11)        
+
 def parier_montant(solde, nom):
     while True:
         montant = input("Entrez le montant à parier : ")
@@ -24,7 +27,7 @@ def parier_montant(solde, nom):
         print(f"Désolé, {nom}, tu as perdu ta mise. Solde restant : {solde}€.")
     return solde
 
-# --- Partie principale ---
+
 nom = input("Comment t'appelles-tu ? ")
 if nom == "pantelis":
     print("Pantelis sérieux tu viens miser ta première paye ??")
@@ -61,6 +64,10 @@ while True:
                 print(" T'as plus une thune. Ciao le casino.")
                 break
         elif sous_choix == "2":
+            solde = parier_montant(solde, nom)
+            if solde <= 0:
+                print(" T'as plus une thune. Ciao le casino.")
+                break
             print(" Le blackjack est pas encore prêt. Patiente un peu.")
         else:
             print("On a dit 1 ou 2... t’inventes des touches là.")
