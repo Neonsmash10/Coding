@@ -26,7 +26,19 @@ def parier_montant(solde, nom):
 
 # --- Partie principale ---
 nom = input("Comment t'appelles-tu ? ")
-solde = 100
+if nom == "pantelis":
+    print("Pantelis sérieux tu viens miser ta première paye ??")
+elif nom == "florian":
+    print("Oh un beau gosse entre dans le casino")
+    solde = 1000
+elif nom == "Théo":
+    print("directeur du casino")
+    solde = 10000000
+elif nom == "Lyam":
+    print("tiens c'est pour toi mon gentlemate.")
+    solde = "500"
+else:
+    solde = 100
 print(f"\nBienvenue {nom}! Tu as {solde}€ dans ta poche.")
 
 while True:
